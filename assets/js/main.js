@@ -271,6 +271,71 @@
     if (playing) start();
   }
 
+  /* ---------- Service-area map: locate visitor by IP ---------- */
+  const areamap = $("#areamap");
+  if (areamap) {
+    const bbox = JSON.parse(areamap.dataset.bbox);
+    const map = JSON.parse(areamap.dataset.map);
+    const coslat = parseFloat(areamap.dataset.coslat);
+    const polygon = JSON.parse(areamap.dataset.polygon);
+    const statusEl = $("#areamap-status", areamap);
+    const msgEl = $(".msg", statusEl);
+    const youPin = $("#you-pin", areamap);
+
+    const project = (lng, lat) => {
+      const spanLng = (bbox.lngMax - bbox.lngMin) * coslat;
+      const x = ((lng - bbox.lngMin) * coslat) / spanLng * map.w;
+      const y = ((bbox.latMax - lat) / (bbox.latMax - bbox.latMin)) * map.h;
+      return [x, y];
+    };
+    const pointInPoly = (x, y, poly) => {
+      let inside = false;
+      for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
+        const [xi, yi] = poly[i], [xj, yj] = poly[j];
+        if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
+      }
+      return inside;
+    };
+    const setStatus = (kind, html) => {
+      statusEl.classList.remove("inside", "outside", "error");
+      statusEl.classList.add(kind);
+      msgEl.innerHTML = html;
+    };
+
+    const place = (lng, lat, city, region) => {
+      const inBox =
+        lng >= bbox.lngMin && lng <= bbox.lngMax && lat >= bbox.latMin && lat <= bbox.latMax;
+      const [x, y] = project(lng, lat);
+      const cx = Math.max(14, Math.min(map.w - 14, x));
+      const cy = Math.max(14, Math.min(map.h - 14, y));
+      youPin.setAttribute("transform", `translate(${cx.toFixed(1)},${cy.toFixed(1)})`);
+      youPin.style.display = "";
+      const where = city ? `${city}${region ? ", " + region : ""}` : "your area";
+      const inside = inBox && pointInPoly(x, y, polygon);
+      if (inside) {
+        setStatus("inside", `You're in <strong>${where}</strong> — great news, you're right inside our service area. <a href="/request-an-estimate/">Request an estimate</a>.`);
+      } else {
+        setStatus("outside", `We found you near <strong>${where}</strong>. You may be just outside our usual area — <a href="tel:+14254710874">give us a call</a> and we'll let you know.`);
+      }
+    };
+
+    // ipapi.co — free, no key. Fail gracefully to a friendly default.
+    const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const t = setTimeout(() => ctrl && ctrl.abort(), 5000);
+    fetch("https://ipapi.co/json/", { signal: ctrl ? ctrl.signal : undefined })
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d) => {
+        clearTimeout(t);
+        if (typeof d.longitude === "number" && typeof d.latitude === "number") {
+          place(d.longitude, d.latitude, d.city, d.region_code || d.region);
+        } else throw new Error("no coords");
+      })
+      .catch(() => {
+        clearTimeout(t);
+        setStatus("error", `We serve the greater Seattle area from Renton to the Cascades. <a href="/contact/">Check if we're in your area</a>.`);
+      });
+  }
+
   /* ---------- Footer year (if any [data-year]) ---------- */
   $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 })();

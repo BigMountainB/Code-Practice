@@ -5,6 +5,7 @@ import {
   pageHero,
   breadcrumbSchema,
 } from "../lib/templates.mjs";
+import { serviceAreaMap } from "../lib/geomap.mjs";
 import { areas, additionalCommunities } from "../data/areas.mjs";
 
 export default function () {
@@ -39,6 +40,20 @@ ${pageHero({
 <section class="section">
   <div class="container">
     <div class="section-head center">
+      <span class="eyebrow center">Are We In Your Area?</span>
+      <h2>From Puget Sound to the Cascades.</h2>
+      <p>Our service area stretches from Renton across the Eastside and up into the mountains. We'll try to find you on the map — see if you're inside the line.</p>
+    </div>
+    <div data-reveal>
+      ${serviceAreaMap(areas.map((a) => ({ slug: a.slug, label: a.city })))}
+    </div>
+    <p class="center text-muted" style="margin-top:1rem;font-size:.82rem">Your location is detected approximately from your IP address, in your browser — nothing is stored. Boundary is approximate; contact us to confirm service to your address.</p>
+  </div>
+</section>
+
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-head center">
       <span class="eyebrow center">Cities We Serve</span>
       <h2>Local craftsmanship, wherever you are.</h2>
       <p>Each community is a little different — and we know them. Explore your city for local details.</p>
@@ -49,7 +64,7 @@ ${pageHero({
   </div>
 </section>
 
-<section class="section-sm bg-cream">
+<section class="section-sm">
   <div class="container center">
     <h3>And the surrounding communities</h3>
     <p class="text-muted" style="max-width:60ch;margin:1rem auto 0">We also serve homeowners and builders throughout the Puget Sound region. Don't see your town? Just ask — chances are we're already nearby.</p>

@@ -3,10 +3,12 @@ import {
   photo,
   photoSrc,
   ctaBand,
-  pageHero,
   breadcrumbSchema,
 } from "../lib/templates.mjs";
 import { galleryCategories, galleryItems } from "../data/site.mjs";
+
+const catLabel = (slug) =>
+  (galleryCategories.find((c) => c.slug === slug) || {}).label || "Our Work";
 
 export default function () {
   const trail = [
@@ -14,12 +16,23 @@ export default function () {
     { label: "Gallery", href: "/gallery/" },
   ];
 
-  const filters =
-    `<button class="active" data-filter="all">All Work</button>` +
-    galleryCategories
-      .map((c) => `<button data-filter="${c.slug}">${c.label}</button>`)
-      .join("");
+  /* ---- Full-screen slideshow (hero) ---- */
+  const slides = galleryItems
+    .map((item, i) => {
+      const src = photoSrc(item.src);
+      return `<figure class="slide${i === 0 ? " active" : ""}" data-cat="${catLabel(item.category)}" data-title="${item.alt.replace(/"/g, "&quot;")}">
+      <img src="${src}" alt="${item.alt.replace(/"/g, "&quot;")}" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"'}>
+    </figure>`;
+    })
+    .join("");
+  const dots = galleryItems
+    .map((_, i) => `<button class="${i === 0 ? "active" : ""}" aria-label="Go to slide ${i + 1}"></button>`)
+    .join("");
+  const thumbs = galleryItems
+    .map((item, i) => `<button class="${i === 0 ? "active" : ""}" aria-label="${item.alt.replace(/"/g, "&quot;")}"><img src="${photoSrc(item.src)}" alt="" loading="lazy"></button>`)
+    .join("");
 
+  /* ---- Masonry tiles ---- */
   const tiles = galleryItems
     .map((item, i) => {
       const src = photoSrc(item.src);
@@ -31,7 +44,11 @@ export default function () {
     })
     .join("");
 
-  // Before/after sets (placeholder pairs until real photos are added).
+  const filters =
+    `<button class="active" data-filter="all">All Work</button>` +
+    galleryCategories.map((c) => `<button data-filter="${c.slug}">${c.label}</button>`).join("");
+
+  /* ---- Before / after ---- */
   const baSets = [
     { before: "/assets/img/gallery/ba-bath-before.jpg", after: "/assets/img/gallery/ba-bath-after.jpg", label: "Primary Bath Remodel — Issaquah" },
     { before: "/assets/img/gallery/ba-kitchen-before.jpg", after: "/assets/img/gallery/ba-kitchen-after.jpg", label: "Kitchen Remodel — Bellevue" },
@@ -52,16 +69,49 @@ export default function () {
     .join("");
 
   const content = `
-${pageHero({
-  eyebrow: "Project Gallery",
-  title: "Decades of craftsmanship, one project at a time.",
-  lead: "Kitchens, baths, custom homes, commercial builds, and the clean rough-in work behind it all. Explore the workmanship that's earned Davis Plumbing its reputation.",
-  image: "/assets/img/gallery/gallery-hero.jpg",
-  imageAlt: "A gallery of Davis Plumbing custom-home and remodel projects",
-  trail,
-})}
+<section class="slideshow" id="slideshow" aria-roledescription="carousel" aria-label="Davis Plumbing project slideshow">
+  <span class="ss-progress" id="ss-progress" aria-hidden="true"></span>
+  ${slides}
+  <div class="ss-dots" role="tablist" aria-label="Choose slide">${dots}</div>
+  <div class="slideshow-inner">
+    <div class="container">
+      <ul class="breadcrumbs">${trail.map((t, i) => (i === trail.length - 1 ? `<li aria-current="page">${t.label}</li>` : `<li><a href="${t.href}">${t.label}</a></li>`)).join("")}</ul>
+    </div>
+    <div class="container slide-caption">
+      <span class="eyebrow" id="ss-cat">Our Work</span>
+      <h2 id="ss-title">Decades of craftsmanship.</h2>
+    </div>
+  </div>
+  <div class="slideshow-ui">
+    <div class="container">
+      <span class="ss-counter"><span id="ss-current">01</span><span class="sep">/</span><span class="total">${String(galleryItems.length).padStart(2, "0")}</span></span>
+      <div class="ss-controls">
+        <button class="ss-btn" id="ss-prev" aria-label="Previous image">${icon("chevronL")}</button>
+        <button class="ss-btn" id="ss-play" aria-label="Pause slideshow" data-state="playing">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/></svg>
+        </button>
+        <button class="ss-btn" id="ss-next" aria-label="Next image">${icon("chevronR")}</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-tight bg-ink">
+  <div class="container-wide">
+    <div class="ss-thumbs" aria-label="Jump to a project">
+      ${thumbs}
+    </div>
+  </div>
+</section>
 
 <section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow center">Browse by Category</span>
+      <h2>Every project, a promise kept.</h2>
+      <p>Filter the work by project type, or tap any image to view it full-size.</p>
+    </div>
+  </div>
   <div class="container-wide">
     <div class="gallery-filters" role="tablist" aria-label="Filter gallery by category">
       ${filters}
@@ -104,9 +154,9 @@ ${ctaBand({
 
   return {
     slug: "gallery",
-    title: "Project Gallery | Kitchens, Baths, Custom Homes & Commercial",
+    title: "Gallery | Our Work — Kitchens, Baths, Custom Homes & Commercial",
     description:
-      "Browse Davis Plumbing's project gallery — custom-home rough-ins, luxury kitchen and bath remodels, fixture installations, and commercial work across the greater Seattle area.",
+      "See Davis Plumbing's work — a full-screen slideshow and gallery of custom-home rough-ins, luxury kitchen and bath remodels, fixture installations, and commercial projects across the greater Seattle area.",
     content,
     head: breadcrumbSchema(trail),
   };

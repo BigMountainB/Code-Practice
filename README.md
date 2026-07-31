@@ -104,6 +104,26 @@ once there and it updates across every page, the footer, and the schema markup.
 - Accessibility: skip link, semantic landmarks, focus-visible styles, keyboard
   gallery/lightbox, `prefers-reduced-motion` honored, ARIA on nav & dialogs.
 
+## Service-area map
+
+The **Service Areas** page includes a self-contained SVG map of the greater-
+Seattle → Cascades region with a dashed **service-area boundary** encompassing
+every city, plus a pin for each. On load it looks up the visitor's approximate
+location via **ipapi.co** (free, no API key), plots a "You" pin, and runs a
+point-in-polygon test to tell them whether they're inside the service area.
+
+- Geometry, projection, and boundary: `src/lib/geomap.mjs`
+  (edit `cityCoords` / `BBOX` to adjust). Behavior: the map block in
+  `assets/js/main.js`.
+- **Privacy:** the lookup happens client-side in the visitor's browser and
+  nothing is stored. If the request fails or is blocked, it degrades to a
+  friendly default message.
+- ipapi.co's free tier is rate-limited (~1k/day). For higher volume, swap the
+  `fetch` URL for a keyed provider (ipinfo, ipgeolocation) — the rest of the
+  code is unchanged.
+- The boundary is an approximate convex outline, not a legal service guarantee
+  — the on-page note says as much.
+
 ## Connecting the forms
 
 The Contact and Request-an-Estimate forms validate client-side and show a
