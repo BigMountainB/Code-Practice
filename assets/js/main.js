@@ -174,6 +174,103 @@
     });
   });
 
+  /* ---------- Our Work: full-screen slideshow ---------- */
+  const ss = $("#slideshow");
+  if (ss) {
+    const slides = $$(".slide", ss);
+    const dots = $$(".ss-dots button", ss);
+    const thumbs = $$(".ss-thumbs button");
+    const capTitle = $("#ss-title");
+    const capCat = $("#ss-cat");
+    const curEl = $("#ss-current");
+    const progress = $("#ss-progress");
+    const DURATION = 6000;
+    let idx = 0;
+    let timer = null;
+    let playing = !prefersReduced;
+
+    const setProgress = (run) => {
+      if (!progress) return;
+      progress.classList.remove("run");
+      progress.style.width = "0";
+      if (run) {
+        // force reflow then animate
+        void progress.offsetWidth;
+        progress.style.transitionDuration = DURATION + "ms";
+        progress.classList.add("run");
+        progress.style.width = "100%";
+      }
+    };
+
+    const show = (n) => {
+      idx = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle("active", i === idx));
+      dots.forEach((d, i) => d.classList.toggle("active", i === idx));
+      thumbs.forEach((t, i) => t.classList.toggle("active", i === idx));
+      const s = slides[idx];
+      if (capTitle) capTitle.textContent = s.dataset.title || "";
+      if (capCat) capCat.textContent = s.dataset.cat || "";
+      if (curEl) curEl.textContent = String(idx + 1).padStart(2, "0");
+      // keep active thumb in view
+      const at = thumbs[idx];
+      if (at && at.scrollIntoView) at.scrollIntoView({ block: "nearest", inline: "center", behavior: prefersReduced ? "auto" : "smooth" });
+      setProgress(playing);
+    };
+
+    const next = () => show(idx + 1);
+    const prev = () => show(idx - 1);
+
+    const start = () => {
+      if (prefersReduced) return;
+      stop();
+      playing = true;
+      setProgress(true);
+      timer = setInterval(next, DURATION);
+      updatePlayBtn();
+    };
+    const stop = () => {
+      playing = false;
+      if (timer) clearInterval(timer);
+      timer = null;
+      setProgress(false);
+      updatePlayBtn();
+    };
+    const playBtn = $("#ss-play");
+    const updatePlayBtn = () => {
+      if (!playBtn) return;
+      playBtn.setAttribute("aria-label", playing ? "Pause slideshow" : "Play slideshow");
+      playBtn.dataset.state = playing ? "playing" : "paused";
+    };
+
+    $("#ss-next")?.addEventListener("click", () => { next(); if (playing) start(); });
+    $("#ss-prev")?.addEventListener("click", () => { prev(); if (playing) start(); });
+    playBtn?.addEventListener("click", () => (playing ? stop() : start()));
+    dots.forEach((d, i) => d.addEventListener("click", () => { show(i); if (playing) start(); }));
+    thumbs.forEach((t, i) => t.addEventListener("click", () => { show(i); if (playing) start(); }));
+
+    ss.addEventListener("mouseenter", () => timer && clearInterval(timer));
+    ss.addEventListener("mouseleave", () => playing && start());
+
+    window.addEventListener("keydown", (e) => {
+      if (!ss.getBoundingClientRect) return;
+      const inView = ss.getBoundingClientRect().bottom > 0 && ss.getBoundingClientRect().top < window.innerHeight;
+      if (!inView) return;
+      if (e.key === "ArrowRight") { next(); if (playing) start(); }
+      if (e.key === "ArrowLeft") { prev(); if (playing) start(); }
+    });
+
+    // Touch swipe
+    let tx = 0;
+    ss.addEventListener("touchstart", (e) => (tx = e.touches[0].clientX), { passive: true });
+    ss.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); if (playing) start(); }
+    }, { passive: true });
+
+    show(0);
+    if (playing) start();
+  }
+
   /* ---------- Footer year (if any [data-year]) ---------- */
   $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 })();
