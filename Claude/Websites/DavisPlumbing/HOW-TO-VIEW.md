@@ -42,13 +42,15 @@ it, this tweak isn't needed.)
   dropdown to **`claude/davis-plumbing-rebuild-p0huf5`**, click the green
   **Code** button → **Download ZIP**, then unzip it. Open a terminal
   (Command Prompt / PowerShell on Windows, Terminal on Mac) and `cd` into the
-  unzipped folder.
+  **`Claude/Websites/DavisPlumbing`** folder inside the unzipped project (that's
+  where the website lives).
 
 - **With Git:**
   ```bash
   git clone https://github.com/BigMountainB/Code-Practice.git
   cd Code-Practice
   git checkout claude/davis-plumbing-rebuild-p0huf5
+  cd Claude/Websites/DavisPlumbing   # the website project lives here
   ```
 
 **Step 3: Start the preview.** From inside the project folder, run:
