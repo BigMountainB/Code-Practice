@@ -271,69 +271,83 @@
     if (playing) start();
   }
 
-  /* ---------- Service-area map: locate visitor by IP ---------- */
+  /* ---------- Service-area map: locate visitor by IP, test real boundaries ---------- */
   const areamap = $("#areamap");
-  if (areamap) {
-    const bbox = JSON.parse(areamap.dataset.bbox);
-    const map = JSON.parse(areamap.dataset.map);
-    const coslat = parseFloat(areamap.dataset.coslat);
-    const polygon = JSON.parse(areamap.dataset.polygon);
-    const statusEl = $("#areamap-status", areamap);
-    const msgEl = $(".msg", statusEl);
-    const youPin = $("#you-pin", areamap);
+  const geoEl = areamap && $("#areamap-geo", areamap);
+  if (areamap && geoEl) {
+    let geo;
+    try { geo = JSON.parse(geoEl.textContent); } catch { geo = null; }
+    if (geo) {
+      const frames = geo.frames;
+      const cities = geo.cities;
+      const statusEl = $("#areamap-status", areamap);
+      const msgEl = $(".msg", statusEl);
+      const pins = { west: $("#you-west", areamap), east: $("#you-east", areamap) };
 
-    const project = (lng, lat) => {
-      const spanLng = (bbox.lngMax - bbox.lngMin) * coslat;
-      const x = ((lng - bbox.lngMin) * coslat) / spanLng * map.w;
-      const y = ((bbox.latMax - lat) / (bbox.latMax - bbox.latMin)) * map.h;
-      return [x, y];
-    };
-    const pointInPoly = (x, y, poly) => {
-      let inside = false;
-      for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
-        const [xi, yi] = poly[i], [xj, yj] = poly[j];
-        if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside;
-      }
-      return inside;
-    };
-    const setStatus = (kind, html) => {
-      statusEl.classList.remove("inside", "outside", "error");
-      statusEl.classList.add(kind);
-      msgEl.innerHTML = html;
-    };
+      const projectF = (f, lng, lat) => [(lng - f.lngMin) * f.cos * f.scale, (f.latMax - lat) * f.scale];
+      const inFrame = (f, lng, lat) => {
+        const [x, y] = projectF(f, lng, lat);
+        return x >= 0 && x <= f.w && y >= 0 && y <= f.h;
+      };
+      // ray-casting on geographic [lng,lat] rings
+      const pip = (lng, lat, ring) => {
+        let inside = false;
+        for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+          const xi = ring[i][0], yi = ring[i][1], xj = ring[j][0], yj = ring[j][1];
+          if (yi > lat !== yj > lat && lng < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) inside = !inside;
+        }
+        return inside;
+      };
+      const setStatus = (kind, html) => {
+        statusEl.classList.remove("inside", "outside", "error");
+        statusEl.classList.add(kind);
+        msgEl.innerHTML = html;
+      };
+      const showPin = (frameKey, lng, lat) => {
+        const f = frames[frameKey], pin = pins[frameKey];
+        if (!f || !pin) return;
+        let [x, y] = projectF(f, lng, lat);
+        x = Math.max(6, Math.min(f.w - 6, x));
+        y = Math.max(6, Math.min(f.h - 6, y));
+        pin.setAttribute("transform", `translate(${x.toFixed(1)},${y.toFixed(1)})`);
+        pin.style.display = "";
+      };
 
-    const place = (lng, lat, city, region) => {
-      const inBox =
-        lng >= bbox.lngMin && lng <= bbox.lngMax && lat >= bbox.latMin && lat <= bbox.latMax;
-      const [x, y] = project(lng, lat);
-      const cx = Math.max(14, Math.min(map.w - 14, x));
-      const cy = Math.max(14, Math.min(map.h - 14, y));
-      youPin.setAttribute("transform", `translate(${cx.toFixed(1)},${cy.toFixed(1)})`);
-      youPin.style.display = "";
-      const where = city ? `${city}${region ? ", " + region : ""}` : "your area";
-      const inside = inBox && pointInPoly(x, y, polygon);
-      if (inside) {
-        setStatus("inside", `You're in <strong>${where}</strong> — great news, you're right inside our service area. <a href="/request-an-estimate/">Request an estimate</a>.`);
-      } else {
-        setStatus("outside", `We found you near <strong>${where}</strong>. You may be just outside our usual area — <a href="tel:+14254710874">give us a call</a> and we'll let you know.`);
-      }
-    };
+      const place = (lng, lat, city, region) => {
+        // Which served jurisdiction (if any) contains the visitor?
+        let served = null;
+        for (const c of Object.values(cities)) {
+          if (c.rings.some((r) => pip(lng, lat, r))) { served = c; break; }
+        }
+        const where = city ? `${city}${region ? ", " + region : ""}` : "your location";
+        const frameKey = inFrame(frames.west, lng, lat) ? "west" : inFrame(frames.east, lng, lat) ? "east" : null;
+        if (frameKey) showPin(frameKey, lng, lat);
 
-    // ipapi.co — free, no key. Fail gracefully to a friendly default.
-    const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-    const t = setTimeout(() => ctrl && ctrl.abort(), 5000);
-    fetch("https://ipapi.co/json/", { signal: ctrl ? ctrl.signal : undefined })
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((d) => {
-        clearTimeout(t);
-        if (typeof d.longitude === "number" && typeof d.latitude === "number") {
-          place(d.longitude, d.latitude, d.city, d.region_code || d.region);
-        } else throw new Error("no coords");
-      })
-      .catch(() => {
-        clearTimeout(t);
-        setStatus("error", `We serve the greater Seattle area from Renton to the Cascades. <a href="/contact/">Check if we're in your area</a>.`);
-      });
+        if (served) {
+          setStatus("inside", `You're in <strong>${served.name}, WA</strong> — a city we serve. <a href="/request-an-estimate/">Request an estimate</a> and we'll take it from here.`);
+        } else if (frameKey) {
+          setStatus("outside", `We found you near <strong>${where}</strong> — inside the region we cover, just outside the outlined city limits. <a href="/contact/">Contact us</a> to confirm we reach your address.`);
+        } else {
+          setStatus("outside", `We found you near <strong>${where}</strong>, outside the mapped area. We still serve much of the greater Seattle area — <a href="tel:+14254710874">give us a call</a>.`);
+        }
+      };
+
+      // ipapi.co — free, no key. Fail gracefully to a friendly default.
+      const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+      const t = setTimeout(() => ctrl && ctrl.abort(), 5000);
+      fetch("https://ipapi.co/json/", { signal: ctrl ? ctrl.signal : undefined })
+        .then((r) => (r.ok ? r.json() : Promise.reject()))
+        .then((d) => {
+          clearTimeout(t);
+          if (typeof d.longitude === "number" && typeof d.latitude === "number") {
+            place(d.longitude, d.latitude, d.city, d.region_code || d.region);
+          } else throw new Error("no coords");
+        })
+        .catch(() => {
+          clearTimeout(t);
+          setStatus("error", `We serve the greater Seattle area from Renton to the Cascades. <a href="/contact/">Check if we're in your area</a>.`);
+        });
+    }
   }
 
   /* ---------- Footer year (if any [data-year]) ---------- */

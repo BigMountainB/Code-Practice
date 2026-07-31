@@ -1340,42 +1340,86 @@ p {
   }
 }
 
-/* ----------  Service-area map  ---------- */
+/* ----------  Service-area map (real jurisdiction boundaries)  ---------- */
 .areamap {
-  position: relative;
   border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
   border: 1px solid var(--line);
-  background: #f2ece0;
+  background: var(--paper);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
 }
-.areamap svg {
+.areamap-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: 0;
+}
+.areamap-main {
+  background: #f4efe4;
+  padding: 1.2rem;
+  border-right: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.areamap-main svg {
   width: 100%;
   height: auto;
+  max-height: 620px;
   display: block;
 }
-.areamap .pin-label {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 600;
-  fill: var(--ink);
-  paint-order: stroke;
-  stroke: #f2ece0;
-  stroke-width: 3px;
+.areamap-side {
+  display: flex;
+  flex-direction: column;
+  padding: 1.4rem;
+  gap: 1.2rem;
 }
-.areamap .region-tag {
+
+/* Jurisdiction outlines */
+.areamap .boundary {
+  fill: rgba(143, 29, 33, 0.12);
+  stroke: var(--red);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  transition: fill 0.25s;
+}
+.areamap .jurisdiction:hover .boundary {
+  fill: rgba(143, 29, 33, 0.22);
+}
+.areamap .city-label {
   font-family: var(--font-body);
   font-size: 13px;
+  font-weight: 600;
+  fill: var(--ink);
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: #f4efe4;
+  stroke-width: 3px;
+  pointer-events: none;
+}
+.areamap .water-label {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 12px;
+  fill: #7d96a0;
+  text-anchor: middle;
+  letter-spacing: 1px;
+}
+.areamap .hq-label {
+  font-family: var(--font-body);
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 3px;
-  fill: var(--red);
-  opacity: 0.65;
+  fill: var(--red-deep);
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: #f4efe4;
+  stroke-width: 3px;
 }
 .areamap .you-label {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 700;
   fill: #157a41;
+  text-anchor: middle;
   paint-order: stroke;
   stroke: #fff;
   stroke-width: 3px;
@@ -1387,16 +1431,20 @@ p {
 }
 @keyframes pulse {
   0% { transform: scale(0.6); opacity: 0.5; }
-  100% { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
 }
+
+/* Status */
 .areamap-status {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.7rem;
-  padding: 1rem 1.3rem;
-  background: var(--paper);
-  border-top: 1px solid var(--line);
-  font-weight: 500;
+  padding: 1rem 1.1rem;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  line-height: 1.45;
   color: var(--ink-soft);
 }
 .areamap-status .dot {
@@ -1405,51 +1453,79 @@ p {
   border-radius: 50%;
   background: var(--stone);
   flex-shrink: 0;
+  margin-top: 6px;
   transition: background 0.3s;
 }
 .areamap-status.inside .dot { background: #22a35a; }
 .areamap-status.outside .dot { background: var(--brass); }
 .areamap-status.error .dot { background: var(--stone-light); }
 .areamap-status .msg strong { color: var(--ink); }
-.areamap-legend {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background: rgba(253, 251, 246, 0.92);
-  backdrop-filter: blur(4px);
+.areamap-status .msg a { color: var(--red); font-weight: 600; }
+
+/* Cle Elum inset */
+.areamap-inset {
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  overflow: hidden;
+  background: #f4efe4;
+}
+.areamap-inset .inset-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
   padding: 0.7rem 0.9rem;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.areamap-inset .inset-dist {
+  font-size: 0.72rem;
+  color: var(--brass-light);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.areamap-inset svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 0.6rem;
+}
+.areamap-inset .inset-note {
+  padding: 0 0.9rem 0.8rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* Legend */
+.areamap-legend {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  font-size: 0.78rem;
+  gap: 0.5rem;
+  font-size: 0.82rem;
   color: var(--ink-soft);
-  box-shadow: var(--shadow-sm);
+  margin-top: auto;
 }
 .areamap-legend li {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
 }
 .areamap-legend .k {
-  width: 14px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   flex-shrink: 0;
 }
 .areamap-legend .k.hq { background: var(--brass); border: 2px solid var(--red-deep); }
-.areamap-legend .k.city { background: var(--red); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line); }
+.areamap-legend .k.city { background: rgba(143, 29, 33, 0.15); border: 1.5px solid var(--red); }
 .areamap-legend .k.you { background: #22a35a; border: 2px solid #fff; box-shadow: 0 0 0 1px var(--line); }
-.areamap-legend .k.region {
-  border-radius: 3px;
-  background: rgba(143, 29, 33, 0.12);
-  border: 1.5px dashed var(--red);
-}
-@media (max-width: 560px) {
-  .areamap-legend { display: none; }
-  .areamap .pin-label { font-size: 20px; }
-  .areamap .region-tag { font-size: 18px; }
+
+@media (max-width: 820px) {
+  .areamap-grid { grid-template-columns: 1fr; }
+  .areamap-main { border-right: none; border-bottom: 1px solid var(--line); }
+  .areamap .city-label { font-size: 15px; }
 }
 
 /* ----------  Reviews  ---------- */

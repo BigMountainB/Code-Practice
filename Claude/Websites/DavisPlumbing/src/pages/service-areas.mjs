@@ -41,13 +41,13 @@ ${pageHero({
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow center">Are We In Your Area?</span>
-      <h2>From Puget Sound to the Cascades.</h2>
-      <p>Our service area stretches from Renton across the Eastside and up into the mountains. We'll try to find you on the map — see if you're inside the line.</p>
+      <h2>Every city we serve, mapped to its limits.</h2>
+      <p>These are the actual jurisdiction boundaries we work within — from the Puget Sound cities to Cle Elum across the pass. We'll try to find you on the map and tell you if you're inside one.</p>
     </div>
     <div data-reveal>
-      ${serviceAreaMap(areas.map((a) => ({ slug: a.slug, label: a.city })))}
+      ${serviceAreaMap()}
     </div>
-    <p class="center text-muted" style="margin-top:1rem;font-size:.82rem">Your location is detected approximately from your IP address, in your browser — nothing is stored. Boundary is approximate; contact us to confirm service to your address.</p>
+    <p class="center text-muted" style="margin-top:1rem;font-size:.82rem">City limits are from public US Census boundary data. Your location is detected approximately from your IP address, in your browser — nothing is stored. Near a boundary? <a href="/contact/" style="color:var(--red)">Contact us</a> to confirm we serve your address.</p>
   </div>
 </section>
 
