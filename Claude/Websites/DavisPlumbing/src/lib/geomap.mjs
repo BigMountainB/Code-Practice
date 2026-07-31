@@ -100,7 +100,7 @@ export function serviceAreaMap() {
   const eastCity = (slug) => {
     const [clng, clat] = centroid(boundaries[slug].rings);
     const [lx, ly] = east.project(clng, clat);
-    return `<g class="jurisdiction">${cityPaths(slug, east)}
+    return `<g class="jurisdiction" data-slug="${slug}">${cityPaths(slug, east)}
       <text x="${lx.toFixed(1)}" y="${(ly - 12).toFixed(1)}" class="city-label">${boundaries[slug].name}</text></g>`;
   };
 

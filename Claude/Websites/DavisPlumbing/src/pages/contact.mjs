@@ -120,7 +120,7 @@ ${pageHero({
     slug: "contact",
     title: "Contact Davis Plumbing | Renton, WA — (425) 471-0874",
     description:
-      "Contact Davis Plumbing in Renton, WA. Call (425) 471-0874 or send a message. Family-owned plumbing serving Renton, Kent, Bellevue, Seattle and the greater Seattle area.",
+      "Contact Davis Plumbing in Renton, WA. Call (425) 471-0874 or send a message. Family-owned plumbing serving Renton, Bellevue, Kirkland, Seattle and the greater Seattle area.",
     content,
     head:
       breadcrumbSchema(trail) +

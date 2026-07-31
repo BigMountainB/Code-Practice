@@ -189,7 +189,7 @@ ${ctaBand()}
     return {
       path: `/services/${s.slug}/`,
       title: `${s.title} in Renton & Greater Seattle | Davis Plumbing`,
-      description: `${s.summary} Davis Plumbing — family-owned, serving Renton, Kent, Bellevue, Seattle and beyond.`,
+      description: `${s.summary} Davis Plumbing — family-owned, serving Renton, Bellevue, Kirkland, Seattle and beyond.`,
       content,
       head:
         breadcrumbSchema(trail) +

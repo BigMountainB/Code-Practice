@@ -119,7 +119,7 @@ ${ctaBand({
   return {
     slug: "about",
     title: "About Davis Plumbing | Our Family, Story & Values",
-    description: `Meet Davis Plumbing — a family-owned plumbing company founded by ${business.ownerName} with ${business.ownerExperienceYears}+ years of craftsmanship. Serving Renton, Kent and the greater Seattle area since ${business.foundedYear}.`,
+    description: `Meet Davis Plumbing — a family-owned plumbing company founded by ${business.ownerName} with ${business.ownerExperienceYears}+ years of craftsmanship. Serving Renton, Bellevue and the greater Seattle area since ${business.foundedYear}.`,
     content,
     head: breadcrumbSchema(trail),
   };

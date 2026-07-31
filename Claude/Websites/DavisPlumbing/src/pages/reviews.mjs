@@ -80,7 +80,7 @@ ${ctaBand({
     slug: "reviews",
     title: "Reviews & Testimonials | Davis Plumbing, Renton WA",
     description:
-      "Read reviews and testimonials for Davis Plumbing — a family-owned, top-rated plumbing contractor serving Renton, Kent and the greater Seattle area for decades.",
+      "Read reviews and testimonials for Davis Plumbing — a family-owned, top-rated plumbing contractor serving Renton, Bellevue and the greater Seattle area for decades.",
     content,
     head:
       breadcrumbSchema(trail) +

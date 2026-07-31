@@ -315,13 +315,18 @@
 
       const place = (lng, lat, city, region) => {
         // Which served jurisdiction (if any) contains the visitor?
-        let served = null;
-        for (const c of Object.values(cities)) {
-          if (c.rings.some((r) => pip(lng, lat, r))) { served = c; break; }
+        let served = null, servedSlug = null;
+        for (const [slug, c] of Object.entries(cities)) {
+          if (c.rings.some((r) => pip(lng, lat, r))) { served = c; servedSlug = slug; break; }
         }
         const where = city ? `${city}${region ? ", " + region : ""}` : "your location";
         const frameKey = inFrame(frames.west, lng, lat) ? "west" : inFrame(frames.east, lng, lat) ? "east" : null;
         if (frameKey) showPin(frameKey, lng, lat);
+        // Hide the label of the city you're standing in so the "You" pin is legible
+        if (servedSlug) {
+          const lbl = areamap.querySelector(`[data-slug="${servedSlug}"] .city-label`);
+          if (lbl) lbl.style.display = "none";
+        }
 
         if (served) {
           setStatus("inside", `You're in <strong>${served.name}, WA</strong> — a city we serve. <a href="/request-an-estimate/">Request an estimate</a> and we'll take it from here.`);

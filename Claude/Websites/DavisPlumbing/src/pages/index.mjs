@@ -10,7 +10,7 @@ import {
   localBusinessSchema,
 } from "../lib/templates.mjs";
 import { services, values, stats, reviews, galleryItems } from "../data/site.mjs";
-import { areas, additionalCommunities } from "../data/areas.mjs";
+import { areas } from "../data/areas.mjs";
 
 function heroTrust() {
   return stats
@@ -20,10 +20,7 @@ function heroTrust() {
 }
 
 export default function () {
-  const areaChips = [
-    ...areas.map((a) => a.city),
-    ...additionalCommunities.slice(0, 6),
-  ];
+  const areaChips = areas.map((a) => a.city);
 
   const content = `
 <section class="hero">

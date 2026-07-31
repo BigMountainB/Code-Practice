@@ -119,7 +119,7 @@ ${pageHero({
     slug: "request-an-estimate",
     title: "Request an Estimate | Davis Plumbing, Renton WA",
     description:
-      "Request a free, no-pressure plumbing estimate from Davis Plumbing. Family-owned, licensed and insured, serving Renton, Kent, Bellevue, Seattle and the greater Seattle area.",
+      "Request a free, no-pressure plumbing estimate from Davis Plumbing. Family-owned, licensed and insured, serving Renton, Bellevue, Kirkland, Seattle and the greater Seattle area.",
     content,
     head: breadcrumbSchema(trail),
   };

@@ -13,12 +13,16 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "https://raw.githubusercontent.com/generalpiston/geojson-us-city-boundaries/master/cities/wa";
 
+// Territory named by davisplumbing.com — nothing added or inferred.
 const CITIES = [
   { slug: "seattle", name: "Seattle", frame: "west" },
   { slug: "bellevue", name: "Bellevue", frame: "west" },
+  { slug: "kirkland", name: "Kirkland", frame: "west" },
+  { slug: "redmond", name: "Redmond", frame: "west" },
+  { slug: "woodinville", name: "Woodinville", frame: "west" },
+  { slug: "medina", name: "Medina", frame: "west" },
   { slug: "mercer-island", name: "Mercer Island", frame: "west" },
   { slug: "renton", name: "Renton", frame: "west" },
-  { slug: "kent", name: "Kent", frame: "west" },
   { slug: "issaquah", name: "Issaquah", frame: "west" },
   { slug: "sammamish", name: "Sammamish", frame: "west" },
   { slug: "cle-elum", name: "Cle Elum", frame: "east" },

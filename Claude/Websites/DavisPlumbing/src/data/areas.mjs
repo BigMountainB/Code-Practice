@@ -32,28 +32,100 @@ export const areas = [
     landmark: "Lake Washington & the Cedar River",
   },
   {
-    slug: "kent",
-    city: "Kent",
-    headline: "Plumbing in Kent, WA",
+    slug: "kirkland",
+    city: "Kirkland",
+    headline: "Plumbing in Kirkland, WA",
     metaDescription:
-      "Trusted plumbing in Kent, WA. Davis Plumbing serves Kent homeowners, builders, and businesses — remodels, new construction, commercial and residential service. Call (425) 471-0874.",
+      "Plumbing in Kirkland, WA. Davis Plumbing serves Kirkland's waterfront homes, remodels, and new construction across the Eastside with custom-home craftsmanship. Call (425) 471-0874.",
     intro:
-      "Just south of our Renton home base, Kent is one of the communities we've served the longest. From the East Hill neighborhoods to the businesses along the valley floor, Davis Plumbing brings the same craftsmanship to Kent that we bring to every custom home we touch.",
+      "Kirkland's walkable downtown and Lake Washington waterfront make it one of the Eastside's most sought-after places to live — and to build. Davis Plumbing brings custom-home craftsmanship to homes throughout Kirkland.",
     body:
-      "Kent's mix of established homes, new development, and commercial space means no two jobs are alike — and that suits us. Whether you're a homeowner planning a kitchen remodel, a builder needing a reliable rough-in crew, or a business owner who needs plumbing that simply works, we bring decades of experience and a family reputation we protect on every project.",
+      "From the waterfront estates along Lake Street to the newer builds up in Totem Lake and Finn Hill, Kirkland homeowners expect their trades to match the quality of their homes. We set designer fixtures with care, rough-in cleanly, and coordinate with the Eastside's finest builders and designers — the work that's earned us a lasting reputation.",
     neighborhoods: [
-      "East Hill",
-      "West Hill",
-      "Kent Valley",
-      "Panther Lake",
-      "Meridian",
-      "Lake Meridian",
-      "Downtown Kent",
-      "Scenic Hill",
+      "Downtown Kirkland",
+      "Juanita",
+      "Totem Lake",
+      "Houghton",
+      "Rose Hill",
+      "Bridle Trails",
+      "Finn Hill",
+      "Kingsgate",
     ],
     localNote:
-      "Kent is minutes from our shop, so we can respond quickly and keep travel costs off your invoice.",
-    landmark: "the Green River Valley",
+      "We work throughout Kirkland's waterfront and hillside neighborhoods, coordinating closely with Eastside builders and designers.",
+    landmark: "Lake Washington's Eastside shoreline",
+  },
+  {
+    slug: "redmond",
+    city: "Redmond",
+    headline: "Plumbing in Redmond, WA",
+    metaDescription:
+      "Plumbing in Redmond, WA. Davis Plumbing serves Redmond homeowners and builders — custom homes, remodels, and new construction from Education Hill to the Sammamish Valley. Call (425) 471-0874.",
+    intro:
+      "Redmond has grown from a quiet valley town into one of the Eastside's most dynamic communities — and its homes have grown with it. Davis Plumbing brings decades of craftsmanship to Redmond's established neighborhoods and new construction alike.",
+    body:
+      "Whether it's a remodel up on Education Hill, a custom build near Bear Creek, or new construction along the Sammamish Valley, we deliver plumbing that's clean behind the walls and flawless at the fixtures. Redmond homeowners and builders count on us for work that's done right and built to last.",
+    neighborhoods: [
+      "Education Hill",
+      "Grass Lawn",
+      "Overlake",
+      "Bear Creek",
+      "Idylwood",
+      "Redmond Ridge",
+      "Union Hill",
+      "Willows",
+    ],
+    localNote:
+      "From established neighborhoods to new construction, we know Redmond's homes and the way this community builds.",
+    landmark: "the Sammamish River Valley",
+  },
+  {
+    slug: "woodinville",
+    city: "Woodinville",
+    headline: "Plumbing in Woodinville, WA",
+    metaDescription:
+      "Plumbing in Woodinville, WA. Davis Plumbing serves Woodinville's wine-country estates, acreage homes, and custom builds — including well and pressure systems. Call (425) 471-0874.",
+    intro:
+      "Known for its wineries and rolling acreage, Woodinville is where Eastside luxury meets country living. Davis Plumbing brings custom-home craftsmanship to its estates, ranch properties, and new builds.",
+    body:
+      "Woodinville's larger lots and rural properties often mean well systems, pressure tanks, and plumbing built for self-reliance — work we know well. From Hollywood Hill estates to homes along the Sammamish Valley, we design and install systems that perform beautifully and last for decades.",
+    neighborhoods: [
+      "Hollywood Hill",
+      "Wellington",
+      "Cottage Lake",
+      "Leota",
+      "Bear Creek",
+      "Sammamish Valley",
+      "English Hill",
+      "Woodinville Wine District",
+    ],
+    localNote:
+      "We're experienced with acreage properties — well systems, pressure tanks, and the plumbing rural-luxury homes require.",
+    landmark: "Sammamish Valley wine country",
+  },
+  {
+    slug: "medina",
+    city: "Medina",
+    headline: "Luxury Plumbing in Medina, WA",
+    metaDescription:
+      "Luxury plumbing in Medina, WA. Davis Plumbing serves Medina's waterfront estates with designer fixture installation, remodels, and new construction — discreet, exacting craftsmanship. Call (425) 471-0874.",
+    intro:
+      "Medina is home to some of the most exclusive waterfront estates on Lake Washington. Homes like these demand a plumber who treats every fixture like a finished piece of jewelry — exactly the standard Davis Plumbing holds.",
+    body:
+      "On Medina's Gold Coast, expectations are absolute, and rightly so. We bring the discretion, punctuality, and precision these estates deserve, coordinating quietly with architects and designers to deliver plumbing worthy of the region's finest homes. It's craftsmanship you can trust with a property like this.",
+    neighborhoods: [
+      "Evergreen Point",
+      "Hunts Point",
+      "Yarrow Point",
+      "Clyde Hill",
+      "Groat Point",
+      "Medina Circle",
+      "Overlake",
+      "Fairweather Bay",
+    ],
+    localNote:
+      "We're experienced with waterfront estates where quality and discretion are everything.",
+    landmark: "the Gold Coast of Lake Washington",
   },
   {
     slug: "bellevue",
@@ -202,20 +274,9 @@ export const areas = [
 ];
 
 /**
- * Additional communities mentioned for the Service Areas index (no dedicated
- * page yet — easy to promote to full pages later by adding to `areas` above).
+ * Only the territory named by davisplumbing.com is listed. Every named city has
+ * a full landing page above, so there are no extra "communities" to list. If the
+ * site later names more, add them to `areas` (with coordinates in
+ * scripts/gen-boundaries.mjs) rather than here.
  */
-export const additionalCommunities = [
-  "Kirkland",
-  "Redmond",
-  "Woodinville",
-  "Newcastle",
-  "Maple Valley",
-  "Covington",
-  "Snoqualmie",
-  "North Bend",
-  "Medina",
-  "Clyde Hill",
-  "Tukwila",
-  "SeaTac",
-];
+export const additionalCommunities = [];

@@ -67,7 +67,7 @@ export const site = {
   domain: "davisplumbing.com",
   titleSuffix: " | Davis Plumbing — Renton & Greater Seattle",
   defaultDescription:
-    "Davis Plumbing is a family-owned plumbing contractor serving Renton, Kent, Bellevue, Seattle and the greater Puget Sound. Custom homes, remodels, new construction and commercial plumbing built on decades of craftsmanship.",
+    "Davis Plumbing is a family-owned plumbing contractor serving Renton, Bellevue, Kirkland, Seattle and the greater Puget Sound. Custom homes, remodels, new construction and commercial plumbing built on decades of craftsmanship.",
   themeColor: "#8f1d21",
   locale: "en_US",
 };
@@ -199,7 +199,7 @@ export const galleryItems = (() => {
       "Double-vanity bathroom plumbing with wall-hung faucets",
     ],
     remodels: [
-      "Full kitchen and bath remodel plumbing by Davis Plumbing in Kent, WA",
+      "Full kitchen and bath remodel plumbing by Davis Plumbing in Kirkland, WA",
       "Before-and-after primary bathroom remodel in Issaquah",
       "Whole-home fixture upgrade during a Seattle remodel",
     ],

@@ -57,7 +57,7 @@ ${ctaBand()}
     slug: "services",
     title: "Plumbing Services | Residential, Commercial, Remodels & New Construction",
     description:
-      "Davis Plumbing offers residential and commercial plumbing, kitchen & bath remodels, and new-construction plumbing across Renton, Kent, Bellevue, Seattle and the greater Seattle area.",
+      "Davis Plumbing offers residential and commercial plumbing, kitchen & bath remodels, and new-construction plumbing across Renton, Bellevue, Kirkland, Seattle and the greater Seattle area.",
     content,
     head: breadcrumbSchema(trail),
   };

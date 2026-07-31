@@ -6,7 +6,7 @@ import {
   breadcrumbSchema,
 } from "../lib/templates.mjs";
 import { serviceAreaMap } from "../lib/geomap.mjs";
-import { areas, additionalCommunities } from "../data/areas.mjs";
+import { areas } from "../data/areas.mjs";
 
 export default function () {
   const trail = [
@@ -64,16 +64,6 @@ ${pageHero({
   </div>
 </section>
 
-<section class="section-sm">
-  <div class="container center">
-    <h3>And the surrounding communities</h3>
-    <p class="text-muted" style="max-width:60ch;margin:1rem auto 0">We also serve homeowners and builders throughout the Puget Sound region. Don't see your town? Just ask — chances are we're already nearby.</p>
-    <div class="chip-grid" style="justify-content:center;max-width:820px;margin:2rem auto 0">
-      ${additionalCommunities.map((c) => `<span class="chip">${c}</span>`).join("")}
-    </div>
-  </div>
-</section>
-
 ${ctaBand()}
 `;
 
@@ -81,7 +71,7 @@ ${ctaBand()}
     slug: "service-areas",
     title: "Service Areas | Plumbing Across the Greater Seattle Area",
     description:
-      "Davis Plumbing serves Renton, Kent, Bellevue, Seattle, Issaquah, Sammamish, Mercer Island, Cle Elum and surrounding communities. Family-owned craftsmanship across the greater Seattle area.",
+      "Davis Plumbing serves Renton, Seattle, Bellevue, Kirkland, Mercer Island, Medina, Issaquah, Sammamish, Redmond, Woodinville and Cle Elum. Family-owned craftsmanship across the greater Seattle area.",
     content,
     head: breadcrumbSchema(trail),
   };
