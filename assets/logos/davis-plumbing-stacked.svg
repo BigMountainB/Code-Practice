@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 400" width="360" height="400" role="img" aria-label="Davis Plumbing stacked logo">
+  <title>Davis Plumbing — Stacked Lockup</title>
+  <desc>Vertical lockup: the crest emblem above a centered serif wordmark. For signage, apparel backs, and square formats.</desc>
+  <defs>
+    <linearGradient id="fS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a5282d"/><stop offset="1" stop-color="#6d1216"/></linearGradient>
+    <linearGradient id="bS" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6d29a"/><stop offset="1" stop-color="#a5673b"/></linearGradient>
+    <linearGradient id="cS" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d59a6a"/><stop offset="1" stop-color="#7d4a26"/></linearGradient>
+  </defs>
+  <g transform="translate(180,130)">
+    <path d="M0 -108 L78 -86 V10 C78 66 44 106 0 124 C-44 106 -78 66 -78 10 V-86 Z" fill="url(#fS)"/>
+    <path d="M0 -108 L78 -86 V10 C78 66 44 106 0 124 C-44 106 -78 66 -78 10 V-86 Z" fill="none" stroke="url(#bS)" stroke-width="5"/>
+    <path d="M0 -96 L67 -76 V10 C67 58 37 94 0 110 C-37 94 -67 58 -67 10 V-76 Z" fill="none" stroke="#e6d29a" stroke-width="1.2" opacity="0.5"/>
+    <rect x="-6" y="-58" width="12" height="120" rx="4" fill="url(#cS)"/>
+    <rect x="-40" y="-28" width="80" height="12" rx="4" fill="url(#cS)"/>
+    <rect x="-11" y="-66" width="22" height="11" rx="3" fill="url(#bS)"/>
+    <circle cx="0" cy="70" r="17" fill="none" stroke="url(#bS)" stroke-width="6"/>
+    <line x1="-17" y1="70" x2="17" y2="70" stroke="url(#bS)" stroke-width="4.5"/>
+    <line x1="0" y1="53" x2="0" y2="87" stroke="url(#bS)" stroke-width="4.5"/>
+  </g>
+  <text x="180" y="300" text-anchor="middle" fill="#16191d" font-family="Georgia, serif" font-weight="500" font-size="52">Davis <tspan fill="#8f1d21" font-style="italic">Plumbing</tspan></text>
+  <line x1="80" y1="322" x2="280" y2="322" stroke="#c1a15a" stroke-width="1"/>
+  <text x="180" y="346" text-anchor="middle" fill="#6b6357" font-family="system-ui, sans-serif" font-size="13" letter-spacing="5">CRAFTSMANSHIP · SINCE 2006</text>
+</svg>

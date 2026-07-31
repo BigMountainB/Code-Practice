@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Davis Plumbing monogram mark, single color">
+  <title>Davis Plumbing — Simplified Mark, Monochrome</title>
+  <desc>Single-color version of the simplified mark for embroidery, laser, and one-color print. Uses currentColor.</desc>
+  <path d="M120 10 L212 40 V128 C212 178 172 214 120 230 C68 214 28 178 28 128 V40 Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M120 22 L202 49 V128 C202 172 166 205 120 219 C74 205 38 172 38 128 V49 Z" fill="none" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+  <path d="M78 74 H120 C150 74 168 96 168 124 C168 152 150 174 120 174 H78 Z
+           M100 96 V152 H119 C136 152 145 140 145 124 C145 108 136 96 119 96 Z"
+        fill="currentColor" fill-rule="evenodd"/>
+  <rect x="72" y="66" width="12" height="116" rx="3" fill="currentColor"/>
+  <rect x="58" y="112" width="40" height="11" rx="3" fill="currentColor"/>
+</svg>

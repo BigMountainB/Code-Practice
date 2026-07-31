@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Davis Plumbing">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1d2126"/><stop offset="1" stop-color="#12151a"/>
+    </linearGradient>
+    <pattern id="p" width="34" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="34" stroke="#d8be86" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect width="1200" height="630" fill="url(#p)"/>
+  <g opacity="0.10" transform="translate(600,249)">
+  <path d="M0 -46 -40 -33 v34 c0 24 18 40 40 47 22 -7 40 -23 40 -47 v-34 z" fill="none" stroke="#c1a15a" stroke-width="2"/>
+  <path d="M0 -20 V22 M-18 -8 H18" stroke="#c1a15a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="0" cy="30" r="5" fill="none" stroke="#c1a15a" stroke-width="3"/>
+</g>
+  <text x="600" y="359" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#d8be86">Davis Plumbing</text>
+  <text x="600" y="399" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" letter-spacing="3" fill="#d8be86" opacity="0.7">RENTON · KENT · GREATER SEATTLE</text>
+</svg>

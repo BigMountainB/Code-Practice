@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="Davis Plumbing brand color palette">
+  <title>Davis Plumbing — Brand Color Palette</title>
+  <rect width="900" height="460" fill="#fdfbf6"/>
+  <text x="40" y="56" fill="#16191d" font-family="Georgia, serif" font-size="30">Davis Plumbing — Brand Palette</text>
+  <text x="40" y="82" fill="#6b6357" font-family="system-ui, sans-serif" font-size="14" letter-spacing="2">HERALDIC CRIMSON · COPPER · BRASS · INK · CREAM</text>
+
+  <!-- swatches -->
+  <g font-family="system-ui, sans-serif">
+    <!-- Heraldic Red -->
+    <rect x="40" y="110" width="180" height="180" rx="6" fill="#8f1d21"/>
+    <text x="52" y="316" fill="#16191d" font-size="15" font-weight="600">Heraldic Crimson</text>
+    <text x="52" y="336" fill="#6b6357" font-size="12">HEX #8F1D21</text>
+    <text x="52" y="354" fill="#6b6357" font-size="12">CMYK 0·80·77·44 · PMS 1817 C</text>
+    <text x="52" y="372" fill="#6b6357" font-size="12">Thread: Madeira 1147</text>
+
+    <!-- Copper -->
+    <rect x="240" y="110" width="180" height="180" rx="6" fill="#a5673b"/>
+    <text x="252" y="316" fill="#16191d" font-size="15" font-weight="600">Copper</text>
+    <text x="252" y="336" fill="#6b6357" font-size="12">HEX #A5673B</text>
+    <text x="252" y="354" fill="#6b6357" font-size="12">CMYK 0·38·64·35 · PMS 1535 C</text>
+    <text x="252" y="372" fill="#6b6357" font-size="12">Thread: Madeira 1157</text>
+
+    <!-- Brass -->
+    <rect x="440" y="110" width="180" height="180" rx="6" fill="#c1a15a"/>
+    <text x="452" y="316" fill="#16191d" font-size="15" font-weight="600">Brass / Gold</text>
+    <text x="452" y="336" fill="#6b6357" font-size="12">HEX #C1A15A</text>
+    <text x="452" y="354" fill="#6b6357" font-size="12">CMYK 0·17·54·24 · PMS 4515 C</text>
+    <text x="452" y="372" fill="#6b6357" font-size="12">Thread: Madeira 1070</text>
+
+    <!-- Ink -->
+    <rect x="640" y="110" width="100" height="180" rx="6" fill="#16191d"/>
+    <text x="640" y="316" fill="#16191d" font-size="15" font-weight="600">Ink</text>
+    <text x="640" y="336" fill="#6b6357" font-size="12">#16191D</text>
+    <text x="640" y="354" fill="#6b6357" font-size="12">Rich Black</text>
+
+    <!-- Cream -->
+    <rect x="760" y="110" width="100" height="180" rx="6" fill="#f7f3ea" stroke="#e4ddd0"/>
+    <text x="760" y="316" fill="#16191d" font-size="15" font-weight="600">Cream</text>
+    <text x="760" y="336" fill="#6b6357" font-size="12">#F7F3EA</text>
+    <text x="760" y="354" fill="#6b6357" font-size="12">Paper / Reverse</text>
+  </g>
+
+  <line x1="40" y1="404" x2="860" y2="404" stroke="#e4ddd0"/>
+  <text x="40" y="432" fill="#6b6357" font-family="system-ui, sans-serif" font-size="12">Type: Fraunces (display serif) · Inter (body). Vehicle vinyl: 3M crimson 3630-53 nearest; gold metallic 3M 1080-G251.</text>
+</svg>

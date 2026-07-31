@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="560" height="220" role="img" aria-label="Davis Plumbing luxury lockup, single color">
+  <title>Davis Plumbing — Heraldic Luxury Lockup, Monochrome</title>
+  <desc>Single-color luxury lockup for print, foil, and dark/light reversal. Uses currentColor.</desc>
+  <g transform="translate(90,110)" fill="none" stroke="currentColor" stroke-linecap="round">
+    <path d="M0 -84 L58 -66 V6 C58 46 32 74 0 88 C-32 74 -58 46 -58 6 V-66 Z" stroke-width="3"/>
+    <path d="M0 -74 L49 -58 V6 C49 40 26 65 0 78 C-26 65 -49 40 -49 6 V-58 Z" stroke-width="1.2" opacity="0.6"/>
+    <rect x="-4" y="-46" width="8" height="86" rx="3" fill="currentColor" stroke="none"/>
+    <rect x="-26" y="-22" width="52" height="8" rx="3" fill="currentColor" stroke="none"/>
+    <circle cx="0" cy="50" r="11" stroke-width="4"/>
+    <line x1="-11" y1="50" x2="11" y2="50" stroke-width="3"/>
+    <line x1="0" y1="39" x2="0" y2="61" stroke-width="3"/>
+  </g>
+  <line x1="182" y1="70" x2="182" y2="150" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+  <text x="204" y="98" fill="currentColor" font-family="Georgia, serif" font-weight="500" font-size="52" letter-spacing="1">Davis</text>
+  <text x="205" y="140" fill="currentColor" font-family="Georgia, serif" font-style="italic" font-size="40">Plumbing</text>
+  <line x1="206" y1="158" x2="470" y2="158" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+  <text x="206" y="182" fill="currentColor" font-family="system-ui, sans-serif" font-size="13" letter-spacing="5" opacity="0.85">CRAFTSMANSHIP · SINCE 2006</text>
+</svg>

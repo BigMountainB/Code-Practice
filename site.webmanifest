@@ -1,0 +1,21 @@
+{
+  "name": "Davis Plumbing",
+  "short_name": "Davis Plumbing",
+  "description": "Davis Plumbing is a family-owned plumbing contractor serving Renton, Kent, Bellevue, Seattle and the greater Puget Sound. Custom homes, remodels, new construction and commercial plumbing built on decades of craftsmanship.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f3ea",
+  "theme_color": "#8f1d21",
+  "icons": [
+    {
+      "src": "/assets/logos/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/logos/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

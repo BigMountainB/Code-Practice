@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Davis Plumbing">
+  <defs>
+    <linearGradient id="ff" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a5282d"/><stop offset="1" stop-color="#6d1216"/></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#ff)"/>
+  <path d="M32 8 55 15 V33 C55 47 45 55 32 60 C19 55 9 47 9 33 V15 Z" fill="none" stroke="#d8be86" stroke-width="2"/>
+  <rect x="29.5" y="18" width="5" height="30" rx="1.6" fill="#f2e6c9"/>
+  <rect x="21" y="26" width="22" height="5" rx="1.6" fill="#f2e6c9"/>
+  <circle cx="32" cy="44" r="6" fill="none" stroke="#f2e6c9" stroke-width="3"/>
+</svg>

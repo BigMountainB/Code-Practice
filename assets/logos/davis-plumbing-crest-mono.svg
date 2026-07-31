@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 340" width="300" height="340" role="img" aria-label="Davis Plumbing crest, single color">
+  <title>Davis Plumbing — Crest, Monochrome</title>
+  <desc>Single-color version of the family crest for embroidery, one-color print, and watermarks. Uses currentColor.</desc>
+  <g fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M150 12 L268 44 V150 C268 232 214 286 150 314 C86 286 32 232 32 150 V44 Z"/>
+    <path d="M150 34 L249 61 V150 C249 217 204 264 150 289 C96 264 51 217 51 150 V61 Z" stroke-width="1.8"/>
+    <line x1="51" y1="84" x2="249" y2="84" stroke-width="1.8"/>
+  </g>
+  <text x="150" y="72" text-anchor="middle" fill="currentColor" font-family="Georgia, serif" font-size="15" letter-spacing="6">EST. 2006</text>
+  <g transform="translate(150,182)" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+    <rect x="-7" y="-70" width="14" height="128" rx="4"/>
+    <rect x="-46" y="-34" width="92" height="14" rx="4"/>
+    <rect x="-12" y="-78" width="24" height="12" rx="3"/>
+    <circle cx="0" cy="52" r="20" stroke-width="6"/>
+    <g stroke-width="4">
+      <line x1="0" y1="34" x2="0" y2="70"/>
+      <line x1="-18" y1="52" x2="18" y2="52"/>
+      <line x1="-13" y1="39" x2="13" y2="65"/>
+      <line x1="13" y1="39" x2="-13" y2="65"/>
+    </g>
+    <circle cx="0" cy="52" r="4" fill="currentColor" stroke="none"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M28 300 H272 L256 328 H44 Z"/>
+    <path d="M12 292 L44 320 M288 292 L256 320"/>
+  </g>
+  <text x="150" y="320" text-anchor="middle" fill="currentColor" font-family="Georgia, serif" font-weight="600" font-size="18" letter-spacing="4">DAVIS PLUMBING</text>
+</svg>

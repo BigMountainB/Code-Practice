@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Davis Plumbing monogram mark">
+  <title>Davis Plumbing — Simplified Mark (Concept 2)</title>
+  <desc>A clean shield monogram: a serif D with a copper riser forming a subtle cross. Built for truck wraps, embroidery, hats, and social avatars.</desc>
+  <defs>
+    <linearGradient id="fieldM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a5282d"/><stop offset="1" stop-color="#6d1216"/>
+    </linearGradient>
+    <linearGradient id="brassM" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6d29a"/><stop offset="1" stop-color="#a5673b"/>
+    </linearGradient>
+  </defs>
+  <!-- rounded shield badge -->
+  <path d="M120 10 L212 40 V128 C212 178 172 214 120 230 C68 214 28 178 28 128 V40 Z" fill="url(#fieldM)"/>
+  <path d="M120 10 L212 40 V128 C212 178 172 214 120 230 C68 214 28 178 28 128 V40 Z" fill="none" stroke="url(#brassM)" stroke-width="5"/>
+  <path d="M120 22 L202 49 V128 C202 172 166 205 120 219 C74 205 38 172 38 128 V49 Z" fill="none" stroke="#d8be86" stroke-width="1.4" opacity="0.55"/>
+
+  <!-- Monogram D -->
+  <path d="M78 74 H120 C150 74 168 96 168 124 C168 152 150 174 120 174 H78 Z
+           M100 96 V152 H119 C136 152 145 140 145 124 C145 108 136 96 119 96 Z"
+        fill="#f4ecdc" fill-rule="evenodd"/>
+  <!-- Copper riser + cross arm overlaying the D's stem -->
+  <g>
+    <rect x="72" y="66" width="12" height="116" rx="3" fill="url(#brassM)"/>
+    <rect x="58" y="112" width="40" height="11" rx="3" fill="url(#brassM)"/>
+  </g>
+</svg>

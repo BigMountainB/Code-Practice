@@ -1,0 +1,16 @@
+{
+  "name": "davis-plumbing-website",
+  "version": "1.0.0",
+  "description": "Marketing website for Davis Plumbing, Inc. — a family-owned plumbing contractor serving Renton, Kent and the greater Seattle area.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && node scripts/serve.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  }
+}
