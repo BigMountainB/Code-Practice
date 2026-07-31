@@ -30,23 +30,49 @@ it, this tweak isn't needed.)
 
 ---
 
-## Option B — Preview it on your own computer
+## Option B — Preview it on your own computer  ← you chose this
 
-If you have **Node.js** installed (free, from nodejs.org):
+**Step 1: Install Node.js** (one time, free). Download the "LTS" version from
+<https://nodejs.org> and install it with the defaults. This gives you the
+`node` and `npm` commands.
+
+**Step 2: Get the website files.** Two ways — pick one:
+
+- **No Git needed (simplest):** On the GitHub repo page, switch the branch
+  dropdown to **`claude/davis-plumbing-rebuild-p0huf5`**, click the green
+  **Code** button → **Download ZIP**, then unzip it. Open a terminal
+  (Command Prompt / PowerShell on Windows, Terminal on Mac) and `cd` into the
+  unzipped folder.
+
+- **With Git:**
+  ```bash
+  git clone https://github.com/BigMountainB/Code-Practice.git
+  cd Code-Practice
+  git checkout claude/davis-plumbing-rebuild-p0huf5
+  ```
+
+**Step 3: Start the preview.** From inside the project folder, run:
 
 ```bash
-# 1. Get the code (one time)
-git clone <this repository URL>
-cd Code-Practice
-git checkout claude/davis-plumbing-rebuild-p0huf5
-
-# 2. Start a local preview
 npm run serve
 ```
 
-Then open **http://localhost:8080** in your browser. Press `Ctrl+C` to stop.
+You'll see `Serving Davis Plumbing at http://localhost:8080`.
 
-(There's nothing to install — `npm run serve` uses a tiny built-in server.)
+**Step 4:** Open **http://localhost:8080** in your browser. That's the whole
+site — click around every page. Press `Ctrl+C` in the terminal to stop it.
+
+> There is **nothing to install** beyond Node itself — no `npm install`, no
+> dependencies, no waiting. The preview uses a tiny built-in server, and the
+> pages are already built and included.
+>
+> If you ever edit content in `src/`, run `npm run build` first to regenerate
+> the pages, then `npm run serve` again. To do both at once: `npm run dev`.
+
+### Windows note
+The commands are identical in PowerShell or Command Prompt. If `npm` isn't
+recognized, close and reopen the terminal after installing Node so it picks up
+the new command.
 
 ---
 
