@@ -401,7 +401,7 @@ p {
 }
 .brand svg,
 .brand img {
-  height: 52px;
+  height: 64px;
   width: auto;
   transition: height 0.35s var(--ease);
 }
@@ -2073,4 +2073,9 @@ a.chip:hover {
   .nav-toggle {
     display: none;
   }
+}
+
+/* Family crest artwork in the footer reads better a little larger. */
+.brand img.footer-crest {
+  height: 96px;
 }

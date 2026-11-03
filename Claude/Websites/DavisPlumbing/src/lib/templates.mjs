@@ -36,6 +36,11 @@ export function photo(src, alt, opts = {}) {
    header so it paints with first HTML (no request, no layout shift).
    Full logo suite lives in /assets/logos/.
 --------------------------------------------------------------------------- */
+// The Davis family crest (transparent artwork in /assets/logos/).
+export function brandCrest(cls = "") {
+  return `<img class="brand-crest${cls ? " " + cls : ""}" src="/assets/logos/crest-160.webp" srcset="/assets/logos/crest-160.webp 1x, /assets/logos/crest-320.webp 2x" alt="Davis Plumbing family crest" width="150" height="160">`;
+}
+
 export function brandLogoInline() {
   return `<svg viewBox="0 0 60 64" role="img" aria-label="Davis Plumbing crest" focusable="false">
   <defs>
@@ -191,7 +196,7 @@ export function header(currentPath) {
   return `<header class="site-header" id="site-header" data-transparent>
   <div class="container-wide">
     <a class="brand" href="/" aria-label="${business.name} — home">
-      ${brandLogoInline()}
+      ${brandCrest()}
       <span class="brand-text">
         <span class="name">Davis Plumbing</span>
         <span class="sub">Est. ${business.foundedYear} · Renton, WA</span>
@@ -223,7 +228,7 @@ export function footer() {
     <div class="footer-top">
       <div class="footer-brand">
         <a class="brand" href="/" aria-label="${business.name}">
-          ${brandLogoInline()}
+          ${brandCrest("footer-crest")}
           <span class="brand-text"><span class="name">Davis Plumbing</span><span class="sub">Est. ${business.foundedYear}</span></span>
         </a>
         <p>${business.shortPitch}</p>
@@ -388,7 +393,7 @@ export function ctaBand({
   secondary = { label: business.phone, href: `tel:${business.phoneRaw}` },
 } = {}) {
   return `<section class="section cta-band bg-red">
-  <img class="crest-watermark" src="/assets/logos/davis-plumbing-crest-mono.svg" alt="" aria-hidden="true" loading="lazy">
+  <img class="crest-watermark" src="/assets/logos/crest-900.webp" alt="" aria-hidden="true" loading="lazy">
   <div class="container" data-reveal>
     <span class="eyebrow center" style="color:var(--brass-light)">Request an Estimate</span>
     <h2>${title}</h2>
