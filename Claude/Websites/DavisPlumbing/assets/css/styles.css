@@ -876,6 +876,35 @@ p {
   color: var(--muted);
   letter-spacing: 0.04em;
 }
+/* Year on top, location on its own line underneath. */
+.badge-float > span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+/* Phones: keep the badge to roughly a quarter of the screen width. */
+@media (max-width: 640px) {
+  .badge-float {
+    bottom: 0.6rem;
+    left: 0.6rem;
+    padding: 0.4rem 0.55rem;
+    gap: 0;
+    border-radius: 8px;
+  }
+  .badge-float svg {
+    display: none; /* no room for the drop icon at this size */
+  }
+  .badge-float .t {
+    font-size: 0.85rem;
+  }
+  .badge-float .s {
+    font-size: 0.54rem;
+    letter-spacing: 0.02em;
+  }
+  .badge-float > span {
+    gap: 0.15rem;
+  }
+}
 .check-list li {
   position: relative;
   padding-left: 2rem;
