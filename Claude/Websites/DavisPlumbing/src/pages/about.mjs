@@ -30,7 +30,7 @@ ${pageHero({
   <div class="container">
     <div class="split">
       <div class="feature-media" style="aspect-ratio:3/2" data-reveal>
-        ${photo("/assets/img/about/davis-family.jpg", "The Davis family at Pike Place Market in Seattle", { kind: "wide" })}
+        ${photo("/assets/img/about/davis-crew.jpg", "The Davis Plumbing crew with their work trucks", { kind: "wide" })}
         <div class="badge-float">
           ${icon("drop")}
           <span><span class="t">Est. ${business.foundedYear}</span><span class="s">Renton, Washington</span></span>
@@ -66,7 +66,7 @@ ${pageHero({
         .join("")}
     </div>
     <div class="feature-media" style="aspect-ratio:3/2;margin-top:3.5rem" data-reveal>
-      ${photo("/assets/img/about/davis-crew.jpg", "The Davis Plumbing crew with their work trucks", { kind: "wide" })}
+      ${photo("/assets/img/about/davis-family.jpg", "The Davis family at Pike Place Market in Seattle", { kind: "wide" })}
     </div>
   </div>
 </section>
