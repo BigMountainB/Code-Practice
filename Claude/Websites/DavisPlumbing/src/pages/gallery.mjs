@@ -46,14 +46,18 @@ export default function () {
 
   const filters =
     `<button class="active" data-filter="all">All Work</button>` +
-    galleryCategories.map((c) => `<button data-filter="${c.slug}">${c.label}</button>`).join("");
+    galleryCategories
+      .filter((c) => galleryItems.some((item) => item.category === c.slug))
+      .map((c) => `<button data-filter="${c.slug}">${c.label}</button>`).join("");
 
   /* ---- Before / after ---- */
   const baSets = [
     { before: "/assets/img/gallery/ba-bath-before.jpg", after: "/assets/img/gallery/ba-bath-after.jpg", label: "Primary Bath Remodel — Issaquah" },
     { before: "/assets/img/gallery/ba-kitchen-before.jpg", after: "/assets/img/gallery/ba-kitchen-after.jpg", label: "Kitchen Remodel — Bellevue" },
   ];
-  const baMarkup = baSets
+  // Only show pairs whose real before AND after photos exist.
+  const baReady = baSets.filter((b) => photoSrc(b.before) === b.before && photoSrc(b.after) === b.after);
+  const baMarkup = baReady
     .map(
       (b, i) => `<div data-reveal data-reveal-delay="${i}">
     <div class="ba" data-ba>
@@ -122,7 +126,7 @@ export default function () {
   </div>
 </section>
 
-<section class="section bg-cream">
+${baReady.length ? `<section class="section bg-cream">
   <div class="container">
     <div class="section-head center">
       <span class="eyebrow center">Before &amp; After</span>
@@ -133,7 +137,7 @@ export default function () {
       ${baMarkup}
     </div>
   </div>
-</section>
+</section>` : ""}
 
 ${ctaBand({
   title: "Imagine what we could build for you.",

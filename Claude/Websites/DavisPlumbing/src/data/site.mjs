@@ -184,65 +184,20 @@ export const galleryCategories = [
   { slug: "specialty", label: "Specialty Plumbing" },
 ];
 
-// Generate a sensible starter set of gallery items across categories.
-// Each maps to /assets/img/gallery/<category>-<n>.jpg (placeholder for now).
-export const galleryItems = (() => {
-  const perCat = {
-    kitchens: [
-      "Custom kitchen with a farmhouse apron sink and pot filler installed by Davis Plumbing",
-      "Designer kitchen faucet and filtered water tap in a Bellevue remodel",
-      "Butler's pantry prep sink rough-in for a Renton custom home",
-    ],
-    bathrooms: [
-      "Freestanding soaking tub with floor-mounted filler in a luxury primary bath",
-      "Curbless walk-in shower with wall-mounted fixtures in a Mercer Island remodel",
-      "Double-vanity bathroom plumbing with wall-hung faucets",
-    ],
-    remodels: [
-      "Full kitchen and bath remodel plumbing by Davis Plumbing in Kirkland, WA",
-      "Before-and-after primary bathroom remodel in Issaquah",
-      "Whole-home fixture upgrade during a Seattle remodel",
-    ],
-    "custom-homes": [
-      "Custom home plumbing rough-in on a luxury build in Sammamish",
-      "Radiant-ready mechanical room in a custom Washington home",
-      "Trim-out and fixture setting in a newly built custom home",
-    ],
-    commercial: [
-      "Commercial restroom plumbing for a tenant improvement project",
-      "Backflow assembly installation on a commercial building",
-      "Multi-family plumbing rough-in on a mixed-use project",
-    ],
-    "rough-in": [
-      "Clean copper and PEX rough-in plumbing by Davis Plumbing",
-      "Under-slab drainage rough-in for a new construction home",
-      "Manifold and water distribution rough-in detail",
-    ],
-    fixtures: [
-      "Brushed-brass fixture installation on a designer vanity",
-      "Tankless water heater installation and gas connection",
-      "Pot filler and pressure-balanced valve installation",
-    ],
-    specialty: [
-      "Whole-home water filtration and softening system",
-      "Recirculating hot water system for instant hot water",
-      "Gas line installation for a range and outdoor kitchen",
-    ],
-  };
-  const items = [];
-  for (const [cat, alts] of Object.entries(perCat)) {
-    alts.forEach((alt, i) => {
-      items.push({
-        category: cat,
-        src: `/assets/img/gallery/${cat}-${i + 1}.jpg`,
-        alt,
-        // wide/tall flags create the masonry rhythm
-        span: i % 3 === 0 ? "tall" : i % 3 === 1 ? "wide" : "",
-      });
-    });
-  }
-  return items;
-})();
+// Real project photos. Each entry's file lives in /assets/img/gallery/.
+// To add more: drop the photo in that folder and add an entry here. A category
+// only shows as a filter button once it has at least one photo.
+export const galleryItems = [
+  { category: "kitchens", src: "/assets/img/gallery/kitchens-1.jpg", alt: "White custom kitchen with a large island prep sink and a window-side main sink" },
+  { category: "kitchens", src: "/assets/img/gallery/kitchens-2.jpg", alt: "Kitchen with a pot filler over the range and a brass faucet at the island prep sink" },
+  { category: "kitchens", src: "/assets/img/gallery/kitchens-3.jpg", alt: "Farmhouse kitchen with an apron-front sink under a beamed ceiling" },
+  { category: "kitchens", src: "/assets/img/gallery/kitchens-4.jpg", alt: "Dark-cabinet kitchen with an island sink and a wet bar" },
+  { category: "bathrooms", src: "/assets/img/gallery/bathrooms-1.jpg", alt: "Primary bath with a freestanding soaking tub, glass shower and lake view" },
+  { category: "bathrooms", src: "/assets/img/gallery/bathrooms-2.jpg", alt: "Slipper soaking tub with a floor-mounted tub filler on hexagon tile" },
+  { category: "bathrooms", src: "/assets/img/gallery/bathrooms-3.jpg", alt: "Freestanding tub and frameless glass walk-in shower in a primary bath" },
+  { category: "bathrooms", src: "/assets/img/gallery/bathrooms-4.jpg", alt: "Primary bath with a drop-in soaking tub and a glass-enclosed shower" },
+  { category: "bathrooms", src: "/assets/img/gallery/bathrooms-5.jpg", alt: "Double vanity with two sinks and wall-mounted mirrors" },
+];
 
 /**
  * Customer reviews. The first three are paraphrased from genuine public reviews

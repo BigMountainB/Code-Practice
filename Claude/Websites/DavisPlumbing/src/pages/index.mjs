@@ -25,7 +25,7 @@ export default function () {
   const content = `
 <section class="hero">
   <div class="hero-media">
-    ${photo("/assets/img/hero/home-hero.jpg", "A Davis Plumbing craftsman setting fixtures in a luxury custom home", { loading: "eager", kind: "hero" })}
+    ${photo("/assets/img/hero/home-hero.jpg", "A custom kitchen plumbed by Davis Plumbing", { loading: "eager", kind: "hero" })}
   </div>
   <div class="container">
     <div class="hero-inner">
@@ -84,7 +84,7 @@ export default function () {
   <div class="container">
     <div class="split reverse">
       <div class="feature-media wide" data-reveal>
-        ${photo("/assets/img/hero/craftsmanship.jpg", "Clean copper and PEX rough-in plumbing by Davis Plumbing in a custom home", { kind: "wide" })}
+        ${photo("/assets/img/hero/craftsmanship.jpg", "Freestanding soaking tub and glass shower in a primary bath plumbed by Davis Plumbing", { kind: "wide" })}
       </div>
       <div data-reveal data-reveal-delay="1">
         <span class="eyebrow">The Davis Standard</span>
